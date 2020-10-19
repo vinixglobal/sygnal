@@ -38,6 +38,7 @@ COPY --from=builder /install /usr/local
 
 # copy the root certificate used by APNs, since Debian removed it
 COPY docker/GeoTrust_Global_CA.crt /usr/local/share/ca-certificates/GeoTrust_Global_CA.crt
+COPY apns.pem /usr/local/share/ca-certificates/apns.pem
 RUN update-ca-certificates
 
 EXPOSE 5000/tcp

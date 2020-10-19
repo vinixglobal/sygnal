@@ -22,7 +22,7 @@
 #database:
 #  name: sqlite3
 #  args:
-#    dbfile: /path/to/database.db
+#    dbfile: /home/jartiga/sygnal/database.db
 #
 #
 # Example Postgres configuration:
@@ -40,7 +40,7 @@
 database:
   name: sqlite3
   args:
-    dbfile: sygnal.db
+    dbfile: /database.db
 
 ## Logging #
 #
@@ -113,11 +113,11 @@ http:
   # Specify a list of interface addresses to bind to.
   #
   # This example listens on the IPv4 loopback device:
-  bind_addresses: ['127.0.0.1']
+ # bind_addresses: ['127.0.0.1']
   # This example listens on all IPv4 interfaces:
-  #bind_addresses: ['0.0.0.0']
+  bind_addresses: ['0.0.0.0']
   # This example listens on all IPv4 and IPv6 interfaces:
-  #bind_addresses: ['0.0.0.0', '::']
+ # bind_addresses: ['0.0.0.0', '::']
 
   # Specify the port number to listen on.
   #
@@ -134,59 +134,59 @@ http:
 #
 # Default is unspecified.
 #
-#proxy: 'http://user:secret@prox:8080'
+#proxy: 'https://push.vinix.im'
 
 ## Metrics #
 #
-metrics:
+#metrics:
   ## Prometheus #
   #
-  prometheus:
+  #prometheus:
     # Specify whether or not to enable Prometheus.
     #
-    enabled: false
+    #enabled: false
 
     # Specify an address for the Prometheus HTTP Server to listen on.
     #
-    address: '127.0.0.1'
+    #address: '127.0.0.1'
 
     # Specify a port for the Prometheus HTTP Server to listen on.
     #
-    port: 8000
+    #port: 8000
 
   ## OpenTracing #
   #
-  opentracing:
+  #opentracing:
     # Specify whether or not to enable OpenTracing.
     #
-    enabled: false
+    #enabled: false
 
     # Specify an implementation of OpenTracing to use. Currently only 'jaeger'
     # is supported.
     #
-    implementation: jaeger
+    #implementation: jaeger
 
     # Specify the service name to be reported to the tracer.
     #
-    service_name: sygnal
+    #service_name: sygnal
 
     # Specify configuration values to pass to jaeger_client.
     #
-    jaeger:
-      sampler:
-        type: 'const'
-        param: 1
-#        local_agent:
+    #jaeger:
+    #  sampler:
+    #    type: 'const'
+    #    param: 1
+#   #     local_agent:
 #          reporting_host: '127.0.0.1'
 #          reporting_port:
-      logging: true
+     # logging: true
 
   ## Sentry #
   #
-  sentry:
+  #sentry:
     # Specify whether or not to enable Sentry.
     #
-    enabled: false
+    #enabled: false
 
     # Specify your Sentry DSN if you enable Sentry
     #
@@ -201,9 +201,10 @@ metrics:
 apps:
   # This is an example APNs push configuration using certificate authentication.
   #
-  #com.example.myapp.ios:
-  #  type: apns
-  #  certfile: com.example.myApp_prod_APNS.pem
+  com.vinix.blast.ios:
+    type: apns
+    certfile: /usr/local/share/ca-certificates/apns.pem
+    platform: production
   #
   #  # This is the maximum number of in-flight requests *for this pushkin*
   #  # before additional notifications will be failed.
@@ -234,9 +235,9 @@ apps:
 
   # This is an example GCM/FCM push configuration.
   #
-  #com.example.myapp.android:
-  #  type: gcm
-  #  api_key: your_api_key_for_gcm
+  com.vinix.blast.android:
+    type: gcm
+    api_key: AAAA7Wr-E7c:APA91bEASU5ye5QJGHHb4ZZ4MNZrJxHD3lBVWMMimcLgtxKdYzsc8mxOjTt5WP-L16tA8nDeFCIbDOoWJLrM2Xo5hBcWQv52kk8x9rvRDaJj_z-YFgK9DOjwyd18AgX73twMJ94zXn6a
   #  # This is the maximum number of connections to GCM servers at any one time
   #  # the default is 20.
   #  #max_connections: 20

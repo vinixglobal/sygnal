@@ -123,3 +123,13 @@ More documentation for Sygnal is available in the ``docs`` directory:
 
 * `Notes for Application Developers <docs/applications.md>`_
 * `Troubleshooting <docs/troubleshooting.md>`_
+
+Running the server using docker container
+===========================================
+
+```
+docker run --detach -v /home/jartiga/sygnal/sygnal.yaml:/sygnal.yaml -p 5000:5000 --expose 5000 6a6305be546a
+```
+
+The image should be different if you rebuild the docker image `docker build -f docker/Dockerfile .`
+Taking in count that the apns.pem it shouldn't change 
